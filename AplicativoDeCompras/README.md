@@ -70,8 +70,6 @@ Camiseta - 150.0
 
 Saldo atual do cartão: 500.0
 
-```
 
 👨‍💻 Autor
 Igor Hermann Salgado
-```
