@@ -43,32 +43,7 @@ A classe `Purchase` representa um item de compra individual.
 
 Ao executar o programa, o console terá a seguinte interação:
 
-Digite o limite do cartao:
-1000
-Digite a descrição da compra:
-Tenis
-Digite o preço da compra:
-350
-Compra realizada\!
-Digite 0 para sair, ou digite 1 para continuar.
-1
-Digite a descrição da compra:
-Camiseta
-Digite o preço da compra:
-150
-Compra realizada\!
-Digite 0 para sair, ou digite 1 para continuar.
-0
-
------
-
-COMPRAS REALIZADAS:
-Tenis - 350.0
-Camiseta - 150.0
-
------
-
-Saldo atual do cartão: 500.0
+<img width="336" height="431" alt="Image" src="https://github.com/user-attachments/assets/0c7fe31b-58f7-4bf2-8033-e70a2fe40e95" />
 
 
 👨‍💻 Autor
