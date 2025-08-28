@@ -46,5 +46,5 @@ Ao executar o programa, o console terá a seguinte interação:
 <img width="336" height="431" alt="Image" src="https://github.com/user-attachments/assets/0c7fe31b-58f7-4bf2-8033-e70a2fe40e95" />
 
 
-👨‍💻 Autor
+## 👨‍💻 Autor
 Igor Hermann Salgado
