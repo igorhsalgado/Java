@@ -19,29 +19,31 @@ public class AlteradorPets {
         BuscadorDePets buscador = new BuscadorDePets();
         List<Pet> petsEncontrados = buscador.buscar(sc, todosOsPets);
 
-        buscador.exibirResultados(petsEncontrados);
+        if (petsEncontrados != null) {
+            buscador.exibirResultados(petsEncontrados);
 
-        if (petsEncontrados.isEmpty()) {
-            return;
-        }
-
-        System.out.println("\nDigite o número do pet que você deseja alterar (ou 0 para cancelar):");
-        try {
-            int escolha = Integer.parseInt(sc.nextLine());
-            if (escolha == 0) {
-                System.out.println("Alteração cancelada");
-                return;
-            } else if (escolha < 1 || escolha > petsEncontrados.size()) {
-                System.out.println("Número inválido. Operação cancelada.");
+            if (petsEncontrados.isEmpty()) {
                 return;
             }
-            Pet petParaAlterar = petsEncontrados.get(escolha - 1);
-            editarDadosDoPet(sc, petParaAlterar);
 
-            criador.atualizarPet(petParaAlterar);
-            System.out.println("\nPet atualizado com sucesso!");
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida. Operação cancelada.");
+            System.out.println("\nDigite o número do pet que você deseja alterar (ou 0 para cancelar):");
+            try {
+                int escolha = Integer.parseInt(sc.nextLine());
+                if (escolha == 0) {
+                    System.out.println("Alteração cancelada");
+                    return;
+                } else if (escolha < 1 || escolha > petsEncontrados.size()) {
+                    System.out.println("Número inválido. Operação cancelada.");
+                    return;
+                }
+                Pet petParaAlterar = petsEncontrados.get(escolha - 1);
+                editarDadosDoPet(sc, petParaAlterar);
+
+                criador.atualizarPet(petParaAlterar);
+                System.out.println("\nPet atualizado com sucesso!");
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Operação cancelada.");
+            }
         }
     }
 
@@ -142,4 +144,5 @@ public class AlteradorPets {
             }
         }
     }
+
 }
