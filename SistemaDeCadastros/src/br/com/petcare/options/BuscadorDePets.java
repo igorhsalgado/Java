@@ -49,11 +49,7 @@ public class BuscadorDePets {
             return Collections.emptyList();
         }
 
-        List<Pet> resultadoFinal = menuDeFiltrosAdicionais(scanner, petsFiltradosPorTipo);
-        while (resultadoFinal == null) {
-            resultadoFinal = menuDeFiltrosAdicionais(scanner, petsFiltradosPorTipo);
-        }
-        return resultadoFinal;
+        return menuDeFiltrosAdicionais(scanner, petsFiltradosPorTipo);
     }
 
     // Menu para o usuário determinar o filtro exato para a busca do ept
@@ -196,4 +192,5 @@ public class BuscadorDePets {
             }
         }
     }
+
 }
