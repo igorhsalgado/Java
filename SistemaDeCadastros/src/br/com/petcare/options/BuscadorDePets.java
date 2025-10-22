@@ -52,7 +52,7 @@ public class BuscadorDePets {
         return menuDeFiltrosAdicionais(scanner, petsFiltradosPorTipo);
     }
 
-    // Menu para o usuário determinar o filtro exato para a busca do ept
+    // Menu para o usuário determinar o filtro exato para a busca do pet
     private List<Pet> menuDeFiltrosAdicionais(Scanner scanner, List<Pet> petsParaBuscar) {
         int opcao = 0;
         do {
@@ -193,3 +193,4 @@ public class BuscadorDePets {
         }
     }
 }
+
