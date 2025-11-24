@@ -36,16 +36,16 @@ public class MenuService {
                 	break;
                 case 2: 
                 	alterarLevel(); 
-                	break; // Requisito: Alteração no segundo arquivo
+                	break; 
                 case 3: 
                 	excluirLevel();
-                	break; // Requisito: Exclusão no segundo arquivo
+                	break; 
                 case 4: 
                 	consultaGeral(); 
-                	break; // Requisito: Consulta separada
+                	break; 
                 case 5: 
                 	consultaEspecifica(); 
-                	break; // Requisito: Relacionamento entre os dois
+                	break; 
                 case 6: 
                 	System.out.println("Saindo...");
                 	break;
@@ -66,7 +66,7 @@ public class MenuService {
         System.out.print("Escolha: ");
     }
 
-    // [1,0] Inserção de dados nos dois arquivos
+    
     private void cadastrar() {
         System.out.println("1 - Cadastrar Jogador");
         System.out.println("2 - Cadastrar Level (Vinculado a um jogador)");
@@ -74,7 +74,7 @@ public class MenuService {
         String op = scanner.nextLine();
 
         if (op.equals("1")) {
-            // Cadastro de Jogador
+            
             System.out.print("ID do Jogador (Unico): ");
             int id = Integer.parseInt(scanner.nextLine());
             if (buscarJogadorPorId(id) != null) {
@@ -91,7 +91,7 @@ public class MenuService {
             System.out.println("Jogador cadastrado!");
 
         } else if (op.equals("2")) {
-            // Cadastro de Level
+           
             System.out.print("ID do Level (Unico): ");
             int id = Integer.parseInt(scanner.nextLine());
             if (buscarLevelPorId(id) != null) {
@@ -99,7 +99,7 @@ public class MenuService {
                 return;
             }
             
-            // Validação de Integridade: Jogador deve existir
+            
             System.out.print("ID do Jogador dono deste level: ");
             int idJog = Integer.parseInt(scanner.nextLine());
             if (buscarJogadorPorId(idJog) == null) {
@@ -120,7 +120,7 @@ public class MenuService {
         }
     }
 
-    // [1,0] Alteração de dados no segundo arquivo (Level)
+    
     private void alterarLevel() {
         System.out.print("Digite o ID do Level que deseja alterar: ");
         int id = Integer.parseInt(scanner.nextLine());
@@ -152,7 +152,7 @@ public class MenuService {
         }
 
         if (encontrado) {
-            // Reescreve o arquivo todo com a lista atualizada
+            
             List<String> linhas = levels.stream().map(Level::toCsv).collect(Collectors.toList());
             gerenciador.salvarTodasLinhas(ARQ_LEVELS, linhas);
             System.out.println("Level atualizado com sucesso!");
@@ -161,7 +161,7 @@ public class MenuService {
         }
     }
 
-    // [1,0] Exclusão no segundo arquivo (Level)
+    
     private void excluirLevel() {
         System.out.print("Digite o ID do Level que deseja excluir: ");
         int id = Integer.parseInt(scanner.nextLine());
@@ -172,7 +172,7 @@ public class MenuService {
 
         for (Level l : levels) {
             if (l.getId() == id) {
-                removido = true; // Não adiciona na nova lista
+                removido = true; 
                 System.out.println("Removendo level: " + l.getNomeFase());
             } else {
                 novaLista.add(l);
@@ -188,7 +188,7 @@ public class MenuService {
         }
     }
 
-    // [1,0] Consulta geral dos dois arquivos (separada)
+    
     private void consultaGeral() {
         System.out.println("\n--- LISTA DE JOGADORES ---");
         List<Jogador> jogadores = listarJogadores();
@@ -201,13 +201,12 @@ public class MenuService {
         levels.forEach(System.out::println);
     }
 
-    // [1,5] Consulta específica utilizando os dois arquivos
-    // Procura no primeiro (Jogador), se achar, busca os correspondentes no segundo (Level)
+    
     private void consultaEspecifica() {
         System.out.print("Digite o ID do Jogador para ver seus levels: ");
         int idBusca = Integer.parseInt(scanner.nextLine());
 
-        // 1. Busca no arquivo de Jogadores
+        
         Jogador j = buscarJogadorPorId(idBusca);
 
         if (j == null) {
@@ -216,7 +215,7 @@ public class MenuService {
             System.out.println("\nJogador Localizado: " + j.getNome() + " (" + j.getNickname() + ")");
             System.out.println("Buscando levels associados...");
             
-            // 2. Busca no arquivo de Levels usando a FK
+            
             List<Level> levelsDoJogador = new ArrayList<>();
             for (Level l : listarLevels()) {
                 if (l.getIdJogador() == j.getId()) {
@@ -235,7 +234,7 @@ public class MenuService {
         }
     }
 
-    // Métodos Auxiliares de Leitura
+    
     private List<Jogador> listarJogadores() {
         List<String> linhas = gerenciador.lerArquivo(ARQ_JOGADORES);
         return linhas.stream().map(Jogador::fromCsv).collect(Collectors.toList());
@@ -253,4 +252,5 @@ public class MenuService {
     private Level buscarLevelPorId(int id) {
         return listarLevels().stream().filter(l -> l.getId() == id).findFirst().orElse(null);
     }
+
 }
