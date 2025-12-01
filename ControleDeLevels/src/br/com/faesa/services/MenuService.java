@@ -48,7 +48,7 @@ public class MenuService {
         System.out.println("\n--- MENU ---");
         System.out.println("1. Inserir Dados (Jogador e/ou Level)");
         System.out.println("2. Alterar Dados de Level");
-        System.out.println("3. Alterar Dados de Jogador"); // <--- Adicionado
+        System.out.println("3. Alterar Dados de Jogador"); 
         System.out.println("4. Excluir Level");
         System.out.println("5. Excluir Jogador (E seus levels)");
         System.out.println("6. Consulta Geral");
@@ -313,4 +313,5 @@ public class MenuService {
     private Level buscarLevelPorId(int id) {
         return listarLevels().stream().filter(l -> l.getId() == id).findFirst().orElse(null);
     }
+
 }
